@@ -1,6 +1,11 @@
 # TodoEx
 
-To start your Phoenix app:
+Pre-requisites:
+```
+Ensure that PostgresQL and EventStore are installed and correctly configured in `dev.exs`
+```
+
+To start the app:
 
   * Install dependencies with `mix deps.get`
   * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
@@ -8,8 +13,6 @@ To start your Phoenix app:
   * Start Phoenix endpoint with `mix phoenix.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
 
 ## Learn more
 
