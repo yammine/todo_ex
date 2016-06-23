@@ -22,7 +22,11 @@ export function checkStatus(response) {
 }
 
 export function parseJSON(response) {
-  return response.json();
+  if (response.status == 204) {
+    return '';
+  } else {
+    return response.json();
+  }
 }
 
 export function httpGet(url) {
@@ -41,6 +45,18 @@ export function httpPost(url, data) {
     method: 'post',
     headers: buildHeaders(),
     body: body,
+  })
+  .then(checkStatus)
+  .then(parseJSON);
+}
+
+export function httpPut(url, data) {
+  const body = JSON.stringify(data);
+
+  return fetch(url, {
+    method: 'put',
+    headers: buildHeaders(),
+    body: body
   })
   .then(checkStatus)
   .then(parseJSON);

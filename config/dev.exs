@@ -42,3 +42,11 @@ config :todo_ex, TodoEx.Repo,
   database: "todo_ex_dev",
   hostname: "localhost",
   pool_size: 10
+
+# Configuring EventStore
+config :todo_ex, :event_store,
+  host: "localhost",
+  port: 2113,
+  username: "admin",
+  password: "changeit",
+  reconnect_delay: 2000

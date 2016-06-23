@@ -6,12 +6,7 @@ defmodule TodoEx.TodoController do
   plug :scrub_params, "todo" when action in [:create, :update]
 
   def index(conn, _params) do
-    # todos = Repo.all(Todo)
-    todos = [ # Let's stub some todos in here for kicks
-        %Todo{id: 1, title: "Testing 1", done: true},
-        %Todo{id: 2, title: "Testing 2", done: false},
-        %Todo{id: 3, title: "Potato", done: true}
-      ]
+    todos = Repo.all(Todo)
     render(conn, "index.json", todos: todos)
   end
 

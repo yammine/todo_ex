@@ -1,10 +1,13 @@
 defmodule TodoEx do
   use Application
 
+  @event_store TodoEx.EventStore
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
   # for more information on OTP Applications
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
+
+    event_store_settings = Application.get_env(:todo_ex, :event_store)
 
     children = [
       # Start the endpoint when the application starts
@@ -13,6 +16,7 @@ defmodule TodoEx do
       supervisor(TodoEx.Repo, []),
       # Here you could define other workers and supervisors as children
       # worker(TodoEx.Worker, [arg1, arg2, arg3]),
+      worker(Extreme, [event_store_settings, [name: @event_store]])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

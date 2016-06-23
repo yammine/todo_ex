@@ -1,11 +1,11 @@
 import React        from 'react';
 import { connect }  from 'react-redux';
-import TodosActions from '../actions/todos';
+import Actions      from '../actions/todos';
 
 class TodosContainer extends React.Component {
   componentDidMount() {
     const { dispatch } = this.props; // this.props is our Store
-    dispatch(TodosActions.fetchTodos());
+    dispatch(Actions.fetchTodos());
   }
 
   render() {
