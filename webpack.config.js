@@ -18,7 +18,7 @@ var config = module.exports = {
   // css and js
   entry: {
     application: [
-      web('css/app.sass'),
+      web('css/app.scss'),
       web('js/app.js'),
     ],
   },
@@ -51,10 +51,10 @@ var config = module.exports = {
           presets: ['react', 'es2015', 'stage-2', 'stage-0'],
         },
       },
-      {
-        test: /\.sass$/,
-        loader: ExtractTextPlugin.extract('style', 'css!sass?indentedSyntax&includePaths[]=' + __dirname +  '/node_modules'),
-      },
+      // Extract SCSS
+      { test: /\.scss$/,
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader!postcss-loader!sass-loader")
+      }
     ],
   },
 

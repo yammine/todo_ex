@@ -13,9 +13,12 @@ class TodoIndexView extends Component {
   render() {
     let { dispatch } = this.props;
     return (
-      <div className="view-container todos index">
+      <div className="view-container">
         <TodoForm dispatch={dispatch} title={this.props.title}/>
-        {::this._renderTodos(this.props.todos)}
+
+        <div className="todos index">
+          {::this._renderTodos(this.props.todos)}
+        </div>
       </div>
     );
   }
